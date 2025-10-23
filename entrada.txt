@@ -1,0 +1,36 @@
+# Este é um AFN (sem épsilon)
+# Aceita qualquer palavra que contenha "aba"
+
+[ESTADOS]
+q0
+q1
+q2
+q3
+
+[ALFABETO]
+a
+b
+
+[INICIAL]
+q0
+
+[FINAIS]
+q3
+
+[TRANSICOES]
+# Fica em q0 com qualquer coisa (loop)
+q0 a q0
+q0 b q0
+
+# Se vê um 'a', tem a *possibilidade* (não-determinismo) de ir para q1
+q0 a q1
+
+# De q1, precisa de um 'b' para ir para q2
+q1 b q2
+
+# De q2, precisa de um 'a' para ir para q3 (estado final)
+q2 a q3
+
+# Uma vez no estado final, fica lá
+q3 a q3
+q3 b q3
